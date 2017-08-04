@@ -10,7 +10,7 @@ class SearchBar extends Component{
   
   render() {
     return (
-      <div>
+      <div className="search-bar">
         <input 
           //Controlled Component: value only changes when state changes
           value = {this.state.term}
