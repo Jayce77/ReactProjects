@@ -17,7 +17,7 @@ export default class SearchBar extends Component {
         <input 
           placeholder='Get a five day forecast in your favorite cities'
           className='form-control'
-          value={this.stateterm}
+          value={this.state.term}
           onChange={this.onInputChange} />
         <span className="input-group-btn">
           <button type='submit' className="btn btn-secondary">Submit</button>
