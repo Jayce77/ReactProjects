@@ -34,14 +34,15 @@ class PostsNew extends Component {
           name='content'
           component={this.renderField}
         />
+        <button type='submit' className='btn btn-primary'>Submit</button>
       </form>
     );
   }
 }
 
-function validate reduxForm(values){
+function validate(values){
   // values -> { title: 'abc', content: 'abc', ...}
-  cons errors ={};
+  const errors ={};
   
   //Validate the inputs from 'values'
   if (!values.title){
