@@ -15,11 +15,11 @@ export function fetchPosts() {
   };
 }
 
-export function createPosts() {
+export function createPost() {
   const request = axios.post(`${ROOT_URL}/posts${API_KEY}`, values);
   
   return {
-    type: CREATE_POSTS,
+    type: CREATE_POST,
     payload request
   };
 }
