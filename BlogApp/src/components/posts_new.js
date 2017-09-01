@@ -10,7 +10,8 @@ class PostsNew extends Component {
     //Took off the nested properites of error and touched from field.meta
     const { meta: { touched, error } } = field;
     const className = `form-group ${touched && error ? 'has-danger' : ''}`;
-    
+    // ...field.input passes ALL props and event handlers from field.input object
+    // to to the input tag
     return (
       <div className={className}>
         <label>{field.label}</label>
