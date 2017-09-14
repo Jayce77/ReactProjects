@@ -1,6 +1,10 @@
 import expect from 'expect';
 
 function CounterReducer(state, action) {
+  if (typeof state === 'undefined') {
+    return 0;
+  }
+  
   if (action.type === 'INCREMENT') {
     return state + 1;
   } else if (action.type === 'DECREMENT') {
@@ -29,6 +33,10 @@ CounterReducer(1, { type: 'DECREMENT' })
 expect(
 CounterReducer(1, { type: 'SOMETHING_ELSE' })
 ).toEqual(1);
+
+expect(
+CounterReducer(undefined, {})
+).toEqual(0);
 
 console.log('Tests passed!');
 
