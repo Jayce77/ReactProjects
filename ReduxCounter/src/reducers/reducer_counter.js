@@ -1,10 +1,12 @@
 import expect from 'expect';
 
-export default function CounterReducer(state, action) {
+function CounterReducer(state, action) {
   if (action.type === 'INCREMENT') {
     return state + 1;
   } else if (action.type === 'DECREMENT') {
     return state - 1;
+  } else {
+    return state;
   }
 }
 
@@ -24,4 +26,10 @@ expect(
 CounterReducer(1, { type: 'DECREMENT' })
 ).toEqual(0);
 
+expect(
+CounterReducer(1, { type: 'SOMETHING_ELSE' })
+).toEqual(1);
+
 console.log('Tests passed!');
+
+export default CounterReducer
