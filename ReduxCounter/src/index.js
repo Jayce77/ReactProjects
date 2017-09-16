@@ -8,8 +8,19 @@ import reducers from './reducers';
 
 const createStoreWithMiddleware = applyMiddleware()(createStore);
 
-ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
-    <App />
-  </Provider>
-  , document.querySelector('.container'));
+const store = createStore(reducers);
+
+store.subscribe(() => {
+  document.body.innerText = store.getState().counter;
+});
+
+document.addEventListener('click', () => {
+  store.dispatch({ type: 'INCREMENT' });
+});
+
+
+//ReactDOM.render(
+//  <Provider store={createStoreWithMiddleware(reducers)}>
+//    <App />
+//  </Provider>
+//  , document.querySelector('.container'));
