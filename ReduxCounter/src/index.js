@@ -10,9 +10,12 @@ const createStoreWithMiddleware = applyMiddleware()(createStore);
 
 const store = createStore(reducers);
 
-store.subscribe(() => {
+const render = () => {
   document.body.innerText = store.getState().counter;
-});
+}
+
+store.subscribe(render);
+render();
 
 document.addEventListener('click', () => {
   store.dispatch({ type: 'INCREMENT' });
