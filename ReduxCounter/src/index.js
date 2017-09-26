@@ -12,17 +12,20 @@ const store = createStore(reducers);
 
 console.log(store);
 
+const onInc = () => {
+  debugger
+  store.counter.dispatch({
+   type: 'INCREMENT'
+  });
+}
+
 
 const render = () => {
   ReactDOM.render(
     <Provider store={createStoreWithMiddleware(reducers)}>
       <App 
         value={store.getState().counter}
-        onIncrement={() => 
-                    store.counter.dispatch({
-                     type: 'INCREMENT'
-                    })
-        }
+        onIncrement={onInc.bind(this)}
         onDecrement={() => 
                     store.dispatch({
                      type: 'DECREMENT'
