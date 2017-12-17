@@ -6,20 +6,40 @@ const appData = {
     appOptions: ['List Item 1','List Item 2', 'List Item 3']
 }
 
+const onFormSubmit = (event) => {
+    event.preventDefault()
+    const option = event.target.elements.option.value
+    console.log('Form Submitted', option)
+
+    if (option) {
+        appData.appOptions.push(option)
+        event.target.elements.option.value = ''
+        renderIndecisionApp()
+    }
+    
+}
 const getLocation = (location) => location === undefined ? 'Unknown' : location
 const getOptions = (options) => options.map((item, index) => <li key={index}>{item}</li>)
 
-const template = (
-    <div>
-        <h1>{appData.appTitle}</h1>
-        { appData.appSubTitle && <p>{appData.appSubTitle}</p> }
-        <p>{appData.appInfo}</p>
-        <p>{ appData.appOptions.length > 0 ? 'Here are your options' : 'No options' }</p>
-        {appData.appOptions && <ol>
-            { getOptions(appData.appOptions) }
-        </ol>}
-    </div>
-)
+const renderIndecisionApp = () => {
+    const template = (
+        <div>
+            <h1>{appData.appTitle}</h1>
+            { appData.appSubTitle && <p>{appData.appSubTitle}</p> }
+            <p>{appData.appInfo}</p>
+            <p>{ appData.appOptions.length > 0 ? 'Here are your options' : 'No options' }</p>
+            {appData.appOptions && <ol>
+                { getOptions(appData.appOptions) }
+            </ol>}
+            <form onSubmit={onFormSubmit}>
+                <input type="text" name="option" id=""/>
+                <input type="submit" value="Add Option"/>
+            </form>
+        </div>
+    )
+    ReactDOM.render(template, appRoot)
+}
+
 
 const appRoot = document.getElementById('app')
-ReactDOM.render(template, appRoot)
+renderIndecisionApp()
