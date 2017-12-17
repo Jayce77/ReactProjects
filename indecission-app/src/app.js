@@ -1,11 +1,5 @@
 console.log('app is running')
 
-const userData = {
-    userName: 'Andrew Mead',
-    userAge: 26,
-    userLocation: 'Philadelphia'
-}
-
 const appData = {
     appTitle: 'Indecision App',
     appSubTitile: 'Put you life in the hands of a computer',
@@ -26,19 +20,23 @@ const template = (
         </ol>}
     </div>
 )
+
+let count = 0
+const addOne = () => console.log('Add one')
+const minusOne = () => console.log('Minus one')
+const reset = () => console.log('Reset')
+
 const templateTwo = (
     <div>
-        <h1>{userData.userName ? userData.userName : 'Anonymous'}</h1>
-        {userData.userAge && userData.userAge >= 18 && <p>age: {userData.userAge}</p>}
-        <p>Location: {getLocation(userData.userLocation)}</p>
+        <h1>Count: {count}</h1>
+        <button onClick={addOne}>+1</button>
+        <button onClick={minusOne}>-1</button>
+        <button onClick={reset}>Reset</button>
     </div>
 )
 
-// const template = React.createElement(
-//     "h1",
-//     { id: 'someId' },
-//     "Something new"
-// )
+console.log(templateTwo)
+
 const appRoot = document.getElementById('app')
 
-ReactDOM.render(template, appRoot)
+ReactDOM.render(templateTwo, appRoot)
