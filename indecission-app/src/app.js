@@ -18,6 +18,17 @@ const onFormSubmit = (event) => {
     }
     
 }
+const clearOptions = (event) => {
+    appData.appOptions = []
+    renderIndecisionApp()
+}
+
+const onMakeDecision =  () => {
+    const randomNum = Math.floor(Math.random() * appData.appOptions.length)
+    const option = appData.appOptions[randomNum]
+    alert(option)
+}
+
 const getLocation = (location) => location === undefined ? 'Unknown' : location
 const getOptions = (options) => options.map((item, index) => <li key={index}>{item}</li>)
 
@@ -28,6 +39,8 @@ const renderIndecisionApp = () => {
             { appData.appSubTitle && <p>{appData.appSubTitle}</p> }
             <p>{appData.appInfo}</p>
             <p>{ appData.appOptions.length > 0 ? 'Here are your options' : 'No options' }</p>
+            <input type='button' disabled={appData.appOptions.length === 0} value='What should I do?' onClick={onMakeDecision}/>
+            <input type='button' value='Clear Options' onClick={clearOptions}/>
             {appData.appOptions && <ol>
                 { getOptions(appData.appOptions) }
             </ol>}
@@ -39,7 +52,6 @@ const renderIndecisionApp = () => {
     )
     ReactDOM.render(template, appRoot)
 }
-
 
 const appRoot = document.getElementById('app')
 renderIndecisionApp()

@@ -19,6 +19,17 @@ var onFormSubmit = function onFormSubmit(event) {
         renderIndecisionApp();
     }
 };
+var clearOptions = function clearOptions(event) {
+    appData.appOptions = [];
+    renderIndecisionApp();
+};
+
+var onMakeDecision = function onMakeDecision() {
+    var randomNum = Math.floor(Math.random() * appData.appOptions.length);
+    var option = appData.appOptions[randomNum];
+    alert(option);
+};
+
 var getLocation = function getLocation(location) {
     return location === undefined ? 'Unknown' : location;
 };
@@ -56,6 +67,8 @@ var renderIndecisionApp = function renderIndecisionApp() {
             null,
             appData.appOptions.length > 0 ? 'Here are your options' : 'No options'
         ),
+        React.createElement('input', { type: 'button', disabled: appData.appOptions.length === 0, value: 'What should I do?', onClick: onMakeDecision }),
+        React.createElement('input', { type: 'button', value: 'Clear Options', onClick: clearOptions }),
         appData.appOptions && React.createElement(
             'ol',
             null,
