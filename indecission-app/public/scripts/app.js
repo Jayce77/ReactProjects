@@ -209,8 +209,9 @@ var AddOption = function (_React$Component6) {
     key: 'handleAddOption',
     value: function handleAddOption(e) {
       e.preventDefault();
-      var error = this.props.handleAddOption(option);
+
       var option = e.target.elements.option.value.trim();
+      var error = this.props.handleAddOption(option);
 
       this.setState(function () {
         return { error: error };
@@ -232,8 +233,7 @@ var AddOption = function (_React$Component6) {
           { onSubmit: this.handleAddOption },
           React.createElement('input', {
             type: 'text',
-            name: 'option',
-            onChange: this.props.handleInputChange
+            name: 'option'
           }),
           React.createElement('input', { type: 'submit', value: 'Add Option' })
         )
