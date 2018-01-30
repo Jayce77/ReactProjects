@@ -58,15 +58,6 @@ class IndecisionApp extends React.Component {
   }
 }
 
-const Header = (props) => {
-  return (
-    <div>
-      <h1>{props.title}</h1>
-      <h2>{props.subtitle}</h2>
-    </div>
-  )
-}
-
 // class Header extends React.Component {
 //   render() {
 //     return (
@@ -93,19 +84,6 @@ const Header = (props) => {
 //   }
 // }
 
-const Action = (props) => {
-  return (
-    <div>
-      <input 
-        type="button" 
-        onClick={props.handlePick} 
-        value="What should I do?" 
-        disabled={!props.hasOptions}
-      />
-    </div>
-  )
-}
-
 // class Options extends React.Component {
 //   constructor(props) {
 //     super(props)
@@ -121,15 +99,6 @@ const Action = (props) => {
 //   }
 // }
 
-const Options = (props) => {
-  return (
-    <div>
-      <input type="button" onClick={props.handleRemoveAll} value="Remove All" />
-      {props.options.map((item, index) => <Option key={index} text={item}/>)}
-    </div>
-  )
-}
-
 // class Option extends React.Component {
 //   render() {
 //     return (
@@ -137,6 +106,37 @@ const Options = (props) => {
 //     )
 //   }
 // }
+
+const Header = (props) => {
+  return (
+    <div>
+      <h1>{props.title}</h1>
+      <h2>{props.subtitle}</h2>
+    </div>
+  )
+}
+
+const Action = (props) => {
+  return (
+    <div>
+      <input
+        type="button"
+        onClick={props.handlePick}
+        value="What should I do?"
+        disabled={!props.hasOptions}
+      />
+    </div>
+  )
+}
+
+const Options = (props) => {
+  return (
+    <div>
+      <input type="button" onClick={props.handleRemoveAll} value="Remove All" />
+      {props.options.map((item, index) => <Option key={index} text={item} />)}
+    </div>
+  )
+}
 
 const Option = (props) => {
   return (

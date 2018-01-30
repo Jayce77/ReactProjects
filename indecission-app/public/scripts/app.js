@@ -81,23 +81,6 @@ var IndecisionApp = function (_React$Component) {
   return IndecisionApp;
 }(React.Component);
 
-var Header = function Header(props) {
-  return React.createElement(
-    'div',
-    null,
-    React.createElement(
-      'h1',
-      null,
-      props.title
-    ),
-    React.createElement(
-      'h2',
-      null,
-      props.subtitle
-    )
-  );
-};
-
 // class Header extends React.Component {
 //   render() {
 //     return (
@@ -124,19 +107,6 @@ var Header = function Header(props) {
 //   }
 // }
 
-var Action = function Action(props) {
-  return React.createElement(
-    'div',
-    null,
-    React.createElement('input', {
-      type: 'button',
-      onClick: props.handlePick,
-      value: 'What should I do?',
-      disabled: !props.hasOptions
-    })
-  );
-};
-
 // class Options extends React.Component {
 //   constructor(props) {
 //     super(props)
@@ -152,6 +122,44 @@ var Action = function Action(props) {
 //   }
 // }
 
+// class Option extends React.Component {
+//   render() {
+//     return (
+//       <div>{this.props.text}</div>
+//     )
+//   }
+// }
+
+var Header = function Header(props) {
+  return React.createElement(
+    'div',
+    null,
+    React.createElement(
+      'h1',
+      null,
+      props.title
+    ),
+    React.createElement(
+      'h2',
+      null,
+      props.subtitle
+    )
+  );
+};
+
+var Action = function Action(props) {
+  return React.createElement(
+    'div',
+    null,
+    React.createElement('input', {
+      type: 'button',
+      onClick: props.handlePick,
+      value: 'What should I do?',
+      disabled: !props.hasOptions
+    })
+  );
+};
+
 var Options = function Options(props) {
   return React.createElement(
     'div',
@@ -162,14 +170,6 @@ var Options = function Options(props) {
     })
   );
 };
-
-// class Option extends React.Component {
-//   render() {
-//     return (
-//       <div>{this.props.text}</div>
-//     )
-//   }
-// }
 
 var Option = function Option(props) {
   return React.createElement(
