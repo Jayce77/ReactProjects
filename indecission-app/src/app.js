@@ -4,12 +4,25 @@ class IndecisionApp extends React.Component {
     super(props)
     this.handleAddOption = this.handleAddOption.bind(this)
     this.handleRemoveAll = this.handleRemoveAll.bind(this)
+    this.handleRemoveSingleOption = this.handleRemoveSingleOption.bind(this)
     this.handlePick = this.handlePick.bind(this)
 
     this.state = {
       options: props.options,
       newOption: ""
     }
+  }
+
+  componentDidMount() {
+    console.log('MOunted')
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log('Updated')
+  }
+
+  comonentWillUnmount() {
+    console.log('Unmounted')
   }
 
   handleAddOption(option) {
@@ -26,9 +39,14 @@ class IndecisionApp extends React.Component {
   }
 
   handleRemoveAll() {
-    this.setState(() => {
-      return { options: []}
-    })
+    this.setState(() => ({ options: []}))
+  }
+
+  handleRemoveSingleOption(e) {
+    const optionToRemove = e.target.name
+    this.setState((prevState) => ({
+      options: prevState.options.filter((option) => option !== optionToRemove)
+    }))
   }
 
   handlePick() {
@@ -47,7 +65,8 @@ class IndecisionApp extends React.Component {
         />
         <Options 
           options={this.state.options}
-          handleRemoveAll={this.handleRemoveAll}/>
+          handleRemoveAll={this.handleRemoveAll}
+          handleRemoveSingleOption={this.handleRemoveSingleOption} />
         <AddOption 
           handleAddOption={this.handleAddOption} 
           newOption={this.state.newOption}
@@ -140,14 +159,20 @@ const Options = (props) => {
   return (
     <div>
       <input type="button" onClick={props.handleRemoveAll} value="Remove All" />
-      {props.options.map((item, index) => <Option key={index} text={item} />)}
+      {props.options.map((item, index) => (
+          <Option key={index} text={item} handleRemoveSingleOption={props.handleRemoveSingleOption } />
+      ))}
     </div>
   )
 }
 
 const Option = (props) => {
   return (
-    <div>{props.text}</div>
+    <div>
+      {props.text}
+      {/* Alternative onClick={(e) => props.handleRemoveSingleOption(props.optionText)} */}
+      <input name={props.text} type='button' value='Remove' onClick={props.handleRemoveSingleOption} />
+    </div>
   )
 }
 
@@ -167,9 +192,7 @@ class AddOption extends React.Component {
     const option = e.target.elements.option.value.trim()
     const error = this.props.handleAddOption(option)
 
-    this.setState(() => {
-      return { error }
-    })
+    this.setState(() => ({ error }))
   }
 
   render() {
