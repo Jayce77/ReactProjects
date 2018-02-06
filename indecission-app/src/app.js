@@ -8,7 +8,7 @@ class IndecisionApp extends React.Component {
     this.handlePick = this.handlePick.bind(this)
 
     this.state = {
-      options: props.options,
+      options: [],
       newOption: ""
     }
   }
@@ -88,9 +88,9 @@ class IndecisionApp extends React.Component {
   }
 }
 
-IndecisionApp.defaultProps = {
- options: []
-}
+// IndecisionApp.defaultProps = {
+//  options: []
+// }
 
 // class Header extends React.Component {
 //   render() {
