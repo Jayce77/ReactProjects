@@ -4,7 +4,13 @@ const Option = (props) =>  (
   <div>
     {props.text}
     {/* Alternative onClick={(e) => props.handleRemoveSingleOption(props.optionText)} */}
-    <input name={props.text} type='button' value='Remove' onClick={props.handleRemoveSingleOption} />
+    <input
+      className='button button--link'
+      name={props.text} 
+      type='button' 
+      value='Remove' 
+      onClick={props.handleRemoveSingleOption} 
+    />
   </div>
 )
 

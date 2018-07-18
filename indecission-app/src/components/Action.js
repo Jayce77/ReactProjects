@@ -3,6 +3,7 @@ import React from 'react'
 const Action = (props) => (
   <div>
     <input
+      className='big-button'
       type="button"
       onClick={props.handlePick}
       value="What should I do?"

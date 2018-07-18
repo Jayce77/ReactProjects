@@ -25,7 +25,7 @@ class AddOption extends React.Component {
               type="text" 
               name="option" 
             />
-            <input type="submit" value="Add Option" />
+            <input className='button' type="submit" value="Add Option" />
           </form>
         </div>
       )
