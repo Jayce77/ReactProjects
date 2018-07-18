@@ -71,26 +71,31 @@
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__person__ = __webpack_require__(2);
+// defaults come before named and can be renamed
 
 
 
 console.log('app.js is running!')
-console.log(__WEBPACK_IMPORTED_MODULE_0__utils__["b" /* square */](8))
+console.log(__WEBPACK_IMPORTED_MODULE_0__utils__["c" /* square */](8))
 console.log(__WEBPACK_IMPORTED_MODULE_0__utils__["a" /* add */](8, 6))
-console.log(__WEBPACK_IMPORTED_MODULE_1__person__["b" /* isAdult */](8))
+console.log(__WEBPACK_IMPORTED_MODULE_0__utils__["b" /* default */](8, 6))
+console.log(__WEBPACK_IMPORTED_MODULE_1__person__["c" /* isAdult */](8))
 console.log(__WEBPACK_IMPORTED_MODULE_1__person__["a" /* canDrink */](82))
+console.log(__WEBPACK_IMPORTED_MODULE_1__person__["b" /* default */](82))
 
 /***/ }),
 /* 1 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return square; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return square; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return add; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return subtract; });
 console.log("utils.js is running")
 //export const square = x => x * x
 const square = x => x * x
 const add = (a, b) => a + b
+const subtract = (a, b) => a - b
 
 // exports - single default export  multiple named export
 
@@ -101,11 +106,14 @@ const add = (a, b) => a + b
 
 "use strict";
 const isAdult = age => age >= 18
-/* harmony export (immutable) */ __webpack_exports__["b"] = isAdult;
+/* harmony export (immutable) */ __webpack_exports__["c"] = isAdult;
 
 const canDrink = age => age >= 21
 /* harmony export (immutable) */ __webpack_exports__["a"] = canDrink;
 
+// default can only be expressions not statements
+const isSenior = age => age >= 65
+/* harmony default export */ __webpack_exports__["b"] = (isSenior);
 
 /***/ })
 /******/ ]);
