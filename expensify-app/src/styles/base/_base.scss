@@ -23,3 +23,7 @@ input[type=submit] {
 input[type=submit]:disabled {
     cursor: default;
 }
+
+.is-active {
+    font-weight: bold;
+}
